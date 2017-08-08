@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+
+	<mapping>
+		<class-a>com.wisewater.system.pojo.SUser</class-a>
+		<class-b>com.wisewater.system.controller.SUserForm</class-b>
+		<!-- <field> <a>expireDate</a> <b date-format="yyyy-MM-dd">expireDate</b> 
+			<a-hint>java.util.Date</a-hint> <b-hint>java.lang.String</b-hint> </field> -->
+	</mapping>
+
+	<mapping map-id="resourcesForMenu">
+		<class-a>com.wisewater.system.pojo.SResource</class-a>
+		<class-b>com.wisewater.system.controller.SResourceForm</class-b>
+		<field-exclude>
+			<a>resType</a>
+			<b>resType</b>
+		</field-exclude>
+		<field-exclude>
+			<a>parentResource</a>
+			<b>parentResource</b>
+		</field-exclude>
+		<field map-id="resourcesForMenu">
+			<a>subResources</a>
+			<b>subResources</b>
+			<a-hint>com.wisewater.system.pojo.SResource</a-hint>
+			<b-hint>com.wisewater.system.pojo.SResource</b-hint>
+		</field>
+	</mapping>
+
+
+	<mapping map-id="resourcesForLogin">
+		<class-a>com.wisewater.system.pojo.SResource</class-a>
+		<class-b>com.wisewater.system.controller.SResourceForm</class-b>
+		<field-exclude>
+			<a>resType</a>
+			<b>resType</b>
+		</field-exclude>
+		<field-exclude>
+			<a>parentResource</a>
+			<b>parentResource</b>
+		</field-exclude>
+		<field-exclude>
+			<a>subResources</a>
+			<b>subResources</b>
+		</field-exclude>
+	</mapping>
+
+
+	<mapping>
+		<class-a>com.wisewater.system.pojo.SRole</class-a>
+		<class-b>com.wisewater.system.controller.SRoleForm</class-b>
+	</mapping>
+
+	<mapping>
+		<class-a>com.wisewater.cusConfig.pojo.CTextMaterial</class-a>
+		<class-b>com.wisewater.cusConfig.controller.CTextMaterialForm
+		</class-b>
+		<field>
+			<a>createdDateTime</a>
+			<b date-format="yyyy-MM-dd HH:mm:ss">createdDateTime</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+	</mapping>
+
+	<mapping>
+		<class-a>com.wisewater.cusConfig.pojo.CPageMaterial</class-a>
+		<class-b>com.wisewater.cusConfig.controller.CPageMaterialForm
+		</class-b>
+		<field>
+			<a>createdDateTime</a>
+			<b date-format="yyyy-MM-dd HH:mm:ss">createdDateTime</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+	</mapping>
+
+	<mapping>
+		<class-a>com.wisewater.cusConfig.pojo.CPicMaterial</class-a>
+		<class-b>com.wisewater.cusConfig.controller.CPicMaterialForm</class-b>
+		<field>
+			<a>createdDateTime</a>
+			<b date-format="yyyy-MM-dd HH:mm:ss">createdDateTime</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+	</mapping>
+
+	<mapping>
+		<class-a>com.wisewater.cusConfig.pojo.CArticleMaterial</class-a>
+		<class-b>com.wisewater.cusConfig.controller.CArticleMaterialForm
+		</class-b>
+		<field>
+			<a>createdDateTime</a>
+			<b date-format="yyyy-MM-dd HH:mm:ss">createdDateTime</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+	</mapping>
+
+	<mapping>
+		<class-a>com.wisewater.function.pojo.CMassSend</class-a>
+		<class-b>com.wisewater.function.controller.CMassSendForm</class-b>
+		<field>
+			<a>createdDatetime</a>
+			<b date-format="yyyy-MM-dd HH:mm:ss">createdDatetime</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+	</mapping>
+
+	<mapping>
+		<class-a>com.wisewater.function.pojo.CStopWtrTemp</class-a>
+		<class-b>com.wisewater.function.controller.CStopWtrTempForm</class-b>
+		<field>
+			<a>sendDateTime</a>
+			<b date-format="yyyy-MM-dd HH:mm:ss">sendDateTime</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+	</mapping>
+	<mapping>
+		<class-a>com.wisewater.bizConfig.pojo.BCustomerUser</class-a>
+		<class-b>com.wisewater.bizConfig.controller.BCustomerUserForm
+		</class-b>
+		<field>
+			<a>registerDate</a>
+			<b date-format="yyyy-MM-dd">registerDate</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+		<field>
+			<a>resetTime</a>
+			<b date-format="yyyy-MM-dd HH:mm:ss">resetTime</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+	</mapping>
+
+	<mapping>
+		<class-a>com.wisewater.fans.pojo.CFan</class-a>
+		<class-b>com.wisewater.fans.controller.CFanForm</class-b>
+		<field>
+			<a>subscribeDate</a>
+			<b date-format="yyyy-MM-dd HH:mm:ss">subscribeDate</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+		<field>
+			<a>unsubscribeDate</a>
+			<b date-format="yyyy-MM-dd HH:mm:ss">unsubscribeDate</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+	</mapping>
+
+	<mapping>
+		<class-a>com.wisewater.fans.pojo.CFanUser</class-a>
+		<class-b>com.wisewater.fans.controller.CFanUserForm</class-b>
+		<field>
+			<a>bindDateTime</a>
+			<b date-format="yyyy-MM-dd HH:mm:ss">bindDateTime</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+	</mapping>
+
+	<mapping map-id="fanUserQuery">
+		<class-a>com.wisewater.fans.pojo.CFanUser</class-a>
+		<class-b>com.wisewater.fans.controller.CFanUserForm</class-b>
+		<field>
+			<a>bindDateTime</a>
+			<b date-format="yyyy-MM-dd HH:mm:ss">bindDateTime</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+	</mapping>
+
+	<mapping>
+		<class-a>com.wisewater.system.pojo.SOperateLog</class-a>
+		<class-b>com.wisewater.system.controller.SOperateLogForm</class-b>
+		<field>
+			<a>visitTime</a>
+			<b date-format="yyyy-MM-dd HH:mm:ss">visitTime</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+	</mapping>
+	<mapping>
+		<class-a>com.wisewater.system.pojo.SLoginLog</class-a>
+		<class-b>com.wisewater.system.controller.SLoginLogForm</class-b>
+		<field>
+			<a>loginTime</a>
+			<b date-format="yyyy-MM-dd HH:mm:ss">loginTime</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+		<field>
+			<a>logoutTime</a>
+			<b date-format="yyyy-MM-dd HH:mm:ss">logoutTime</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+	</mapping>
+
+	<mapping>
+		<class-a>com.wisewater.system.pojo.SFansOperateLog</class-a>
+		<class-b>com.wisewater.system.controller.SFansOperateLogForm</class-b>
+		<field>
+			<a>visitTime</a>
+			<b date-format="yyyy-MM-dd HH:mm:ss">visitTime</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+	</mapping>
+
+	<mapping>
+		<class-a>com.wisewater.cms.pojo.CCms</class-a>
+		<class-b>com.wisewater.cms.controller.CCmsForm</class-b>
+		<field>
+			<a>createdDateTime</a>
+			<b date-format="yyyy-MM-dd HH:mm">createdDateTime</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+	</mapping>
+	
+	<mapping>
+		<class-a>com.wisewater.feedback.pojo.CFeedBackManage</class-a>
+		<class-b>com.wisewater.feedback.controller.CFeedBackManageForm</class-b>
+		<field>
+			<a>createTime</a>
+			<b date-format="yyyy-MM-dd HH:mm">createTime</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+		<field>
+			<a>deleteTime</a>
+			<b date-format="yyyy-MM-dd HH:mm">deleteTime</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+		<field>
+			<a>replyTime</a>
+			<b date-format="yyyy-MM-dd HH:mm">replyTime</b>
+			<a-hint>java.util.Date</a-hint>
+			<b-hint>java.lang.String</b-hint>
+		</field>
+	</mapping>
+</mappings>

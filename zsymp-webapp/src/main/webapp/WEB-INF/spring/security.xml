@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/security
+        				http://www.springframework.org/schema/security/spring-security-3.2.xsd 
+						http://www.springframework.org/schema/context
+        				http://www.springframework.org/schema/context/spring-context-4.1.xsd
+        				http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<!-- 运营管理后台：http配置，拒绝访问页面 -->
+	<http access-decision-manager-ref="accessDecisionManager" pattern="/biz/**"
+		authentication-manager-ref="bizAuthManager" access-denied-page="/pc/error/bizAccessDenied.jsp">
+
+		<!-- 必须登录才有权限访问 -->
+		<intercept-url pattern="/biz/**" access="IS_AUTHENTICATED_FULLY" />
+
+		<remember-me use-secure-cookie="true" user-service-ref="bizUserDetailsServiceImpl" />
+		<!-- default-target-url="/biz/main.do" always-use-default-target="true" -->
+		<form-login login-page="/biz/welcome.do"
+			authentication-failure-url="/biz/logOut.do?error"
+			login-processing-url="/biz/j_spring_security_check.do"
+			username-parameter="loginName" password-parameter="password"
+			authentication-success-handler-ref="bizLoginSuccessHandler" />
+
+		<!-- logout-success-url="/biz/logOut.do?logout" -->
+		<!-- success-handler-ref="bizLogOutSuccessHandler" -->
+		<logout success-handler-ref="bizLogOutSuccessHandler"
+			logout-url="/biz/j_spring_security_logout.do" />
+		<csrf />
+
+		<!-- 单用户登录，踢出前一登录者 --><!-- 踢出后提示面页 -->
+		<session-management
+			session-authentication-error-url="/biz/welcome.do"
+			invalid-session-url="/biz/welcome.do">
+			<concurrency-control expired-url="/pc/error/bizExpired.jsp" /><!-- 
+				过期页面 -->
+		</session-management>
+	</http>
+
+	<beans:bean id="bizLoginSuccessHandler"
+		class="com.wisewater.interceptor.SimpleLoginSuccessHandler">
+		<beans:property name="alwaysUseDefaultTargetUrl" value="true" />
+		<beans:property name="defaultTargetUrl" value="/biz/main.do" />
+	</beans:bean>
+
+	<beans:bean id="bizLogOutSuccessHandler"
+		class="com.wisewater.interceptor.SimpleLoginSuccessHandler">
+		<beans:property name="alwaysUseDefaultTargetUrl" value="true" />
+		<beans:property name="defaultTargetUrl" value="/biz/logOut.do?logout" />
+	</beans:bean>
+
+	<!-- 客户管理后台： -->
+	<http pattern="/cus/**" access-decision-manager-ref="cusAccessDecisionManager"
+		authentication-manager-ref="cusAuthManager" access-denied-page="/pc/error/cusAccessDenied.jsp">
+
+		<!-- 必须登录才有权限访问 -->
+		<intercept-url pattern="/cus/**" access="IS_AUTHENTICATED_FULLY" />
+
+		<remember-me use-secure-cookie="true" user-service-ref="cusUserDetailsServiceImpl" />
+		<!-- default-target-url="/cus/main.do" always-use-default-target="true" -->
+		<form-login login-page="/cus/welcome.do"
+			authentication-failure-url="/cus/logOut.do?error"
+			login-processing-url="/cus/j_spring_security_check.do"
+			username-parameter="loginUser" password-parameter="loginPassword"
+			authentication-success-handler-ref="cusLoginSuccessHandler" />
+
+		<!-- logout-success-url="/cus/logOut.do?logout" -->
+		<!-- success-handler-ref="cusLogOutSuccessHandler" -->
+		<logout success-handler-ref="cusLogOutSuccessHandler"
+			logout-url="/cus/j_spring_security_logout.do" />
+		<csrf />
+
+		<!-- 单用户登录，踢出前一登录者 --><!-- 踢出后提示面页 -->
+		<!--<session-management
+			session-authentication-error-url="/cus/welcome.do"
+			invalid-session-url="/cus/welcome.do">
+			<concurrency-control expired-url="/cus/welcome.do" />--><!-- 
+				过期页面 -->
+		<!-- </session-management>-->
+	</http>
+
+	<beans:bean id="cusLoginSuccessHandler"
+		class="com.wisewater.interceptor.SimpleLoginSuccessHandler">
+		<beans:property name="alwaysUseDefaultTargetUrl" value="true" />
+		<beans:property name="defaultTargetUrl" value="/cus/main.do" />
+	</beans:bean>
+	<beans:bean id="cusLogOutSuccessHandler"
+		class="com.wisewater.interceptor.SimpleLoginSuccessHandler">
+		<beans:property name="alwaysUseDefaultTargetUrl" value="true" />
+		<beans:property name="defaultTargetUrl" value="/cus/logOut.do?logout" />
+	</beans:bean>
+
+	<!-- 客户管理后台：数据库验证数据及密码 -->
+	<authentication-manager id="cusAuthManager">
+		<authentication-provider user-service-ref="cusUserDetailsServiceImpl">
+			<password-encoder hash="md5">
+				<salt-source user-property="username" />
+			</password-encoder>
+		</authentication-provider>
+	</authentication-manager>
+
+
+	<!-- 运营管理后台：数据库验证数据及密码 -->
+	<authentication-manager id="bizAuthManager">
+		<authentication-provider user-service-ref="bizUserDetailsServiceImpl">
+			<password-encoder hash="md5">
+				<salt-source user-property="username" />
+			</password-encoder>
+		</authentication-provider>
+	</authentication-manager>
+
+
+
+	<!-- 访问决策管理器，这里使用AffirmativeBased，并加入一个自定义的投票器UserRoleVoter -->
+	<beans:bean id="accessDecisionManager"
+		class="org.springframework.security.access.vote.AffirmativeBased">
+		<beans:property name="decisionVoters">
+			<beans:list>
+				<!-- <beans:bean class="org.springframework.security.access.vote.RoleVoter" 
+					/> <beans:bean class="org.springframework.security.access.vote.AuthenticatedVoter" 
+					/> -->
+				<beans:bean class="com.wisewater.security.voter.UserRoleVoter">
+					<beans:property name="excludeUrl"
+						value="/biz/welcome.do**,/biz/logOut.do**,/resources/**,/services/**" />
+				</beans:bean>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+
+
+	<!-- 访问决策管理器，这里使用AffirmativeBased，并加入一个自定义的投票器UserRoleVoter -->
+	<beans:bean id="cusAccessDecisionManager"
+		class="org.springframework.security.access.vote.AffirmativeBased">
+		<beans:property name="decisionVoters">
+			<beans:list>
+				<!-- <beans:bean class="org.springframework.security.access.vote.RoleVoter" 
+					/> <beans:bean class="org.springframework.security.access.vote.AuthenticatedVoter" 
+					/> -->
+				<beans:bean class="com.wisewater.security.voter.UserRoleVoter">
+					<beans:property name="excludeUrl"
+						value="/cus/welcome.do**,/cus/logOut**,/resources/**,/services/**,/cus/bcustomeruser_register.do**,/cus/bcustomeruser_checkByEmail.do**,/cus/bcustomeruser_checkByLoginName.do**,/cus/bcustomeruser_checkByMobile.do**,/cus/registerByInvitedCode.do**,/cus/bcustomeruser_toForgetPassword.do**,/cus/bcustomeruser_resetPassword.do**,/cus/bcustomeruser_toresetPassword.do**" />
+				</beans:bean>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+
+	<!-- Provides automatic CSRF token inclusion when using Spring MVC Form 
+		tags or Thymeleaf. token设置，只要使用spring mvc from标签即可。 -->
+	<beans:bean id="requestDataValueProcessor"
+		class="org.springframework.security.web.servlet.support.csrf.CsrfRequestDataValueProcessor" />
+
+
+</beans:beans>

@@ -1,0 +1,85 @@
+/*
+ * ------------------------------
+ *  辅助类
+ * ------------------------------
+ */
+
+/**
+ * display
+ * 
+ */
+
+.f-dn {display: none!important;}
+.f-ib {display: inline-block; *display: inline; *zoom: 1;}
+.f-db {display: block;}
+
+
+/**
+ * float
+ * 
+ */
+
+.f-fl {float: left;}
+.f-fr {float: right;}
+
+
+/**
+ * center-block
+ * 
+ */
+
+.f-cb {float: none; display: block; margin-left: auto; margin-right: auto;}
+
+
+/**
+ * clearfix 清除浮动
+ * 
+ */
+
+.f-cf:before, .f-cf:after {content: ""; display: table;}
+.f-cf:after {clear: both;} /* For IE 6/7 (trigger hasLayout) */
+.f-cf {zoom: 1;}
+
+
+/**
+ * overflow
+ * 
+ */
+
+.f-oh {overflow: hidden;}
+
+
+/**
+ * 字太多的时候不换行，结尾用省略号
+ * 
+ */
+
+.f-toe {overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+
+
+/**
+ * font-weight
+ * 
+ */
+
+.f-fwn {font-weight: normal;}
+.f-fwb {font-weight: bold;}
+
+
+/**
+ * text-align
+ * 
+ */
+
+.f-tal {text-align: left;}
+.f-tac {text-align: center;}
+.f-tar {text-align: right;}
+
+
+/**
+ * text-decoration
+ * 
+ */
+
+.f-tdn, .f-tdn:hover {text-decoration: none;}
+.f-tdu, .f-tdu:hover {text-decoration: underline;}

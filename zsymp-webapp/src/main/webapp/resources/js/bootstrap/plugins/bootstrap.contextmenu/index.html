@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+
+    <!-- Le styles -->
+	  <!--<link href="res/prettify.css" type="text/css">-->
+    <link href="bootstrap-combined.min.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+  </head>
+
+  <body onload="prettyPrint()">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <!--<a class="brand" href="https://github.com/sydcanem/bootstrap-contextmenu">Context Menu Plugin Extension</a>-->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+    	<div class="span7">
+        <h1>Demo</h1>
+	      <p>Right click inside the box to trigger the menu</p>
+
+        <h5>Demo 1</h5>
+        <p>Using <code>data-toggle="context"</code> to attach a context-menu</p>
+	      <!-- Element div that needs a custom context menu -->
+	      <div id="context" data-toggle="context" data-target="#context-menu" style="height:300px;width:650px;border:1px solid #ddd"></div>
+
+	      <!-- Your custom menu with dropdown-menu as default styling -->
+	      <div id="context-menu">
+	      	<ul class="dropdown-menu" role="menu">
+            <li><a tabindex="-1">Action</a></li>
+	           <li><a tabindex="-1">Another action</a></li>
+	           <li><a tabindex="-1">Something else here</a></li>
+	           <li class="divider"></li>
+	           <li><a tabindex="-1">Separated link</a></li>
+	      	</ul>
+	      </div>
+
+        <h5>Demo 2</h5>
+        <div id="main" data-toggle="context">This is an area where the context menu is active <span style="background-color: #cecece">However, we wont allow it here.</span> But anywhere else in this text should be perfectly fine. This one is started with only javascript</div>
+
+        <div id="context-menu2">
+          <ul class="dropdown-menu" role="menu">
+              <li><a tabindex="-1">Action</a></li>
+              <li><a tabindex="-1">Another action</a></li>
+              <li><a tabindex="-1">Something else here</a></li>
+              <li id="sortby" class="dropdown-submenu">
+                  <a href="#" tabindex="-1">Sort by</a>
+                  <ul aria-labelledby="dropdownMenu" role="menu" class="dropdown-menu">
+                      <li id="name"><a href="#" tabindex="-1">Name</a></li>
+                      <li id="size"><a href="#" tabindex="-1">Size</a></li>
+                      <li id="itemtype"><a href="#" tabindex="-1">Item type</a></li>
+                      <li id="datemodified"><a href="#" tabindex="-1">Date modified</a></li>
+                      <li id="s1" class="divider"></li>
+                      <li id="Ascending"><a href="#" tabindex="-1">Ascending</a></li>
+                      <li id="Descending"><a href="#" tabindex="-1">Descending</a></li>
+                      <li id="s2" class="divider"></li>
+                      <li id="More" class="dropdown-submenu"><a href="#" tabindex="-1">More</a>
+                          <ul aria-labelledby="dropdownMenu" role="menu" class="dropdown-menu">
+                              <li id="other1"><a href="#" tabindex="-1">Other 1</a></li>
+                              <li id="other2"><a href="#" tabindex="-1">Other 2</a></li>
+                              <li id="other3"><a href="#" tabindex="-1">Other 3</a></li>
+                              <li id="sx" class="divider"></li>
+                              <li id="other4"><a href="#" tabindex="-1">Other 4</a></li>
+                          </ul>
+                      </li>
+                  </ul>
+              </li>
+              <li class="divider"></li>
+              <li><a tabindex="-1">Separated link</a></li>
+          </ul>
+        </div>
+
+        <h5>Demo 3</h5>
+        <p>Show the menu name of the item that was selected</p>
+        <!-- Element div that needs a custom context menu -->
+        <div id="context3" data-toggle="context" style="height:300px;width:650px;border:1px solid #ddd"></div>
+    <!--
+              <h2>Usage</h2>
+              <h3>Via data attributes</h3>
+              <p>Add <code>data-toggle="context"</code> to an element that needs a context menu.</p>
+              <pre class="prettyprint linenums">
+    &lt;div id="context" data-toggle="context" data-target="#context-menu"&gt;
+      ...
+    &lt;/div&gt;</pre>
+                <p>Your menu <code>&lt;ul&gt;</code> element must have a <code>dropdown-menu</code> class.
+                <pre class="prettyprint linenums">
+    &lt;div id="context-menu"&gt;
+      &lt;ul class="dropdown-menu" role="menu"&gt;
+        &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+        ...
+        &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;</pre>
+            <h3>Via Javascript</h3>
+            <p>Call the context menus via Javascript:</p>
+            <pre class="prettyprint linenums">
+    $('.context').contextmenu();</pre>
+        </div> &lt;!&ndash; /container &ndash;&gt;-->
+
+
+    <script src="../jquery/jquery.min.js"></script>
+    <script src="bootstrap-contextmenu.js"></script>
+    <script type="text/javascript">
+      $('#main').contextmenu({
+        target: '#context-menu2',
+        before: function (e) {
+          // This function is optional.
+          // Here we use it to stop the event if the user clicks a span
+          e.preventDefault();
+          if (e.target.tagName == 'SPAN') {
+            e.preventDefault();
+            this.closemenu();
+            return false;
+          }
+          this.getMenu().find("li").eq(2).find('a').html("This was dynamically changed");
+          return true;
+        }
+      });
+    </script>
+    <script type="text/javascript">
+      $('#context3').contextmenu({
+        target: '#context-menu2',
+        onItem: function (context, e) {
+          alert($(e.target).text());
+        }
+      });
+
+      $('#context-menu2').on('show.bs.context', function (e) {
+        console.log('before show event');
+      });
+
+      $('#context-menu2').on('shown.bs.context', function (e) {
+        console.log('after show event');
+      });
+
+      $('#context-menu2').on('hide.bs.context', function (e) {
+        console.log('before hide event');
+      });
+
+      $('#context-menu2').on('hidden.bs.context', function (e) {
+        console.log('after hide event');
+      });
+    </script>
+</body></html>

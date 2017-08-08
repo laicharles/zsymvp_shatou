@@ -1,0 +1,32 @@
+html,body,h1,h2,h3,h4,h5,*{ font-family: "微软雅黑","宋体",sans-serif;}
+.font-size-normal{ font-size: 16px !important;}
+.ml-normal{ margin-left: 10px;}
+.wraper #main{ margin-top: 40px;}
+
+/*登录页*/
+.mainGuide{ background: #f1f1f1;}
+
+.navbar-inner a{ display: inline-block; vertical-align: middle; width: 120px;color: #fff; text-decoration: none; font-size: 16px; text-align: center; margin: 0 10px;}
+.navbar-inner a:hover{ color: #e6e6e6;}
+
+.loginPage{ width: 100%;text-align: center;}
+.loginPage #bgLogin{position: absolute;top: 0;left: 0;z-index: -1;}
+.loginPage .frmLogin,.loginPage .frmRegedit{ display: inline-block; vertical-align: top; background: #fff; border: 1px solid #ccc;margin: 100px 40px 0; width: 40%;height:auto;text-align: center;}
+.loginPage .frmLogin{padding:25px 0 0 0;}
+.loginPage .frmRegedit{padding:25px 0 0 0;}
+.loginPage input[type=text],.loginPage input[type=password]{height: 41px;line-height: 47px;width: 310px;margin-left:40px;margin-bottom:0;box-shadow:none;border-width:1px;border-radius: 3px;border-color:#e6e6e6;margin:10px auto;padding: 8px 6px;font-size: 1.2em;outline:0;background: none;font-family: "微软雅黑";}
+.loginPage ul li{list-style: none;}
+.loginPage label{ display: inline; cursor: default;}
+.loginPage .btnLogin{width: 57%;height:53px;margin: 35px auto 15px auto;display: inline-block;*display: inline;*zoom: 1;color:#fff;background: #08c;text-align:center;border: none;cursor: pointer;outline: none;text-decoration: none;font-size: 24px;line-height: 53px;}
+.loginPage .btnLogin:hover{background: #005580;}
+.loginPage .btnLogin:active{background: #08c;}
+.loginPage .btnRegedit{width: 57%;height:53px;margin: 35px auto 15px auto;display: inline-block;*display: inline;*zoom: 1;color:#fff;background: #08c;text-align:center;border: none;cursor: pointer;outline: none;text-decoration: none;font-size: 24px;line-height: 53px;}
+.loginPage .btnRegedit:hover{background: #005580;}
+.loginPage .btnRegedit:active{background: #08c;}
+.errortip{color: #CC0000;}
+.loginPage .btnLogin-wrap{position: relative;}
+.loginPage .btnFotgetPWD{position: absolute;right: 188px; top: 8px;}
+
+/*固定页尾*/
+#footer{position: fixed;bottom: 0; width: 100%;height: 24px;}
+input[disabled], select[disabled], textarea[disabled], input[readonly], select[readonly], textarea[readonly]{cursor: default;}

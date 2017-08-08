@@ -1,0 +1,22 @@
+html {
+    position: relative!important;
+    min-height: 100%!important;
+}
+
+body {
+	padding-bottom: 60px!important;
+}
+
+.logo-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+}
+
+.logo-footer .copyright img {
+	display: block;
+	float: none;
+    width: 80px;
+    margin: 0 auto;
+}

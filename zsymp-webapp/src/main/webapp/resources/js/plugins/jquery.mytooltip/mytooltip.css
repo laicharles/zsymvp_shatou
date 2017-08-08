@@ -1,0 +1,23 @@
+/*
+ * ------------------------------
+ *  提示条插件
+ * ------------------------------
+ */
+ 
+.mytooltip-container {
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1001;
+	width: 100%;
+	max-height: 800px;
+}
+
+.mytooltip-container .alert {
+	display: block;
+	margin-bottom: 0!important;
+	text-align: center;
+	opacity: 1;
+	
+}

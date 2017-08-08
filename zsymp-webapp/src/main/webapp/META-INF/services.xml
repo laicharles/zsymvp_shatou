@@ -1,0 +1,18 @@
+<serviceGroup>
+
+<service name="HelloWorld">
+	<description>
+		HelloWorld Service Example
+    </description>
+	<parameter name="ServiceClass">
+		com.wisewater.ws.service.IWSService 
+    </parameter>
+    <parameter name="ServiceObjectSupplier">org.apache.axis2.extensions.spring.receivers.SpringServletContextObjectSupplier</parameter>
+    <parameter name="SpringBeanName">WSService</parameter>
+	<operation name="getName">
+        <messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"
+                       class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	</operation>
+</service>
+
+</serviceGroup>

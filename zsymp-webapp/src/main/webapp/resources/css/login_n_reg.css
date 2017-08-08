@@ -1,0 +1,524 @@
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html, body {
+	min-height: 100%;
+	font-family: 'Microsoft YaHei', SimHei!important;
+	color: #666;
+	background: #f5f5f5;
+}
+
+html {
+	position: relative;
+}
+
+a, p,
+h1, h2, h3, h4, h5, h6,
+button {
+	margin: 0;
+	padding: 0;
+	font-family: 'Microsoft YaHei', SimHei;
+	font-weight: normal;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+a:link, a:visited, a:hover, a:active {
+	text-decoration: none;
+}
+
+button {
+	border: 1px solid #bfbfbf;
+	background: #0090d6!important;
+}
+
+button:active {
+	background: #007ab5!important;
+}
+
+/*	
+ * ------------------------------
+ *	图标
+ * ------------------------------
+ */
+.ui-icon {
+	display: block;
+	width: 20px;
+	height: 24px;
+}
+
+.ui-icon-mobile, .ui-icon-user, .ui-icon-password, .ui-icon-edit {
+	background: url(../images/register-icon24x24.png);
+}
+
+/* Firefox 不支持 background-position-x 和 background-position-y 属性，所以要把它们写到一起 */
+.ui-icon-mobile {
+	background-position: -5px 0;
+}
+
+.ui-icon-user {
+	background-position: -5px -29px;
+}
+
+.ui-icon-password {
+	background-position: -5px -59px;
+}
+
+.ui-icon-edit {
+	background-position: -5px -88px;
+}
+
+/*	
+ * ------------------------------
+ *	错误提示信息
+ * ------------------------------
+ */
+#error-message {
+	padding: 10px 10px;
+	color: #ff0000;
+	font-size: 14px;
+}
+
+/*
+ * ------------------------------
+ *  .cus-page: #cus-login-body, #cus-register-body
+ *  .biz-page: #biz-login-body, #biz-wc-login-body
+ * ------------------------------
+ */
+.biz-page {
+	background-image: url(../images/login-bg.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: repeat;
+	padding-bottom: 150px;
+}
+
+.cus-page .page-wrapper {
+	background: #31a5dc;
+}
+
+/*
+ * header 页头
+ * footer 页脚
+ */
+.cus-page header, .cus-page footer {
+	background: #f5f5f5;
+}
+
+.biz-page footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+header .logo-wrapper {
+	overflow: hidden;
+}
+
+footer .copyright {
+	text-align: center;
+	color: #555;
+	font-size: 14px;
+	line-height: 2;
+	padding: 50px 0;
+}
+
+.cus-page header .logo-wrapper {
+	width: 960px;
+}
+
+.cus-page header .logo-wrapper, .biz-page header .logo-wrapper {
+	padding: 25px;
+}
+
+.biz-page header .logo-wrapper {
+	margin-top: 50px;
+}
+
+.cus-page header .logo-wrapper, .cus-page footer .copyright {
+	margin: 0 auto;
+}
+
+header .zsy-logo {
+	display: block;
+	width: 180px;
+	height: 68px;
+}
+
+.cus-page header .zsy-logo {
+	float: left;
+}
+
+.biz-page header .zsy-logo {
+	margin: 0 auto;
+}
+
+header .zsy-logo img {
+	width: 225px;
+}
+
+/*	
+ * ------------------------------
+ *	.main 中间
+ * ------------------------------
+ */
+.cus-page .main {
+	overflow: hidden;
+	width: 960px;
+	min-height: 625px;
+	margin: 0 auto;
+	padding: 72px 0;
+}
+
+#cus-login-body .main {
+	background: url(../img/login-pic02.jpg) no-repeat bottom;
+}
+
+#cus-register-body .main {
+	background: url(../img/login-pic.jpg) no-repeat bottom;
+}
+
+/*	
+ * ------------------------------
+ *	login-box, register-box
+ * ------------------------------
+ */
+.login-box-wrapper, .register-box-wrapper {
+	max-width: 600px;
+	padding: 7px;
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 5px;
+}
+
+.cus-page .login-box-wrapper, .cus-page .register-box-wrapper {
+	float: right;
+	width: 38%;
+	margin-right: 7%;
+}
+
+.biz-page .login-box-wrapper {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.login-box, .register-box {
+	position: relative;
+	background: rgba(255, 255, 255, 0.95);
+	border: 1px solid #eee;
+	border-radius: 4px;
+}
+
+/* box 内部 */
+.box-header {
+	padding: 0 15px;
+}
+
+.cus-page .box-header h2 {
+	padding: 0 10px;
+	line-height: 50px;
+	font-size: 24px;
+	color: #333;
+	border-bottom: 1px solid #bfbfbf;
+}
+
+.biz-page .box-header h2 {
+	padding-top: 15px;
+	font-size: 28px;
+	text-align: center;
+	letter-spacing: 5px;
+}
+
+.biz-page .box-header h2 img.box-type {
+	width: 100%;
+}
+
+.box-header span {
+	font-size: 18px;
+	color: #999;
+}
+
+.box-content {
+	padding: 0 15px 15px 15px;
+}
+
+.form-group {
+	overflow: hidden;
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+.input-group {
+	display: table;
+	width: 100%;
+	padding: 5px;
+	background: rgba(201, 201, 201, 0.5);
+	border-radius: 4px;
+}
+
+.input-group-addon {
+	background: #fff;
+}
+
+.input-group input {
+	display: table-cell;
+	position: relative;
+	z-index: 2;
+	float: left;
+	width: 100%;
+	margin-bottom: 0;
+	height: 42px;
+}
+
+.verify {
+	float: left;
+}
+
+.verify.verify-text {
+	width: 65%;
+}
+
+.verify.verify-img, .verify.verify-refresh {
+	margin-top: 5px;
+}
+
+.verify.verify-img {
+	width: 35%;
+	height: 42px;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+}
+
+.verify.verify-refresh {
+	width: 20%;
+	padding: 14px 0;
+	text-align: center;
+	/* background: #0091d6; */
+	color: #0091d6;
+	border: 1px solid #0091d6;
+	border-radius: 5px;
+	/* color: #fff; */
+	font-size: 16px;
+}
+
+.my-btn-submit {
+	display: block;
+	width: 100%;
+	line-height: 44px;
+	background: #003185;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 18px;
+}
+
+.btn-blue {
+	background: -webkit-linear-gradient(#3cb8f7, #009ff0); /* Safari 5.1 - 6.0 */
+	background: linear-gradient(#3cb8f7, #009ff0); /* 标准的语法 */
+	color: #fefefe!important;
+}
+
+.btn-blue:active {
+	background: #0097e8;
+}
+
+.btn-blue[disabled] {
+	background: #ccc;
+}
+
+.box-bottom {
+	padding: 0 15px 15px 15px;
+}
+
+#go-register-wrapper, #go-login-wrapper {
+	color: #003185;
+	text-align: right;
+	font-size: 16px;
+}
+
+#go-register-wrapper a, #go-login-wrapper a {
+	display: inline-block;
+	padding: 0 10px;
+	line-height: 36px;
+	background: #fff;
+	border: 2px solid #eee;
+	border-radius: 5px;
+	text-align: center;
+	color: #003185;
+	font-size: 16px;
+}
+
+#go-register-wrapper a:hover, #go-login-wrapper a:hover {
+	background: rgba(100, 100, 100, 0.05);
+}
+
+/* 获取授权码 */
+.authcode {
+	float: left;
+	box-sizing: border-box;
+}
+
+.authcode-text {
+	width: 62%;
+}
+
+.authcode-btn {
+	width: 36%;
+	margin: 5px 0 0 2%;
+    padding: 15px 0;
+    text-align: center;
+    background: #0091d6;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 15px;
+}
+
+.authcode-btn:link, .authcode-btn:visited, .authcode-btn:hover, .authcode-btn:active {
+	color: #fff;
+}
+
+/* 请选择水司 */
+.select-wc {
+	background: #fff;
+	border: 1px solid #dbdbdb;
+	border-radius: 3px;
+}
+
+.selected-wc-text {
+	overflow: hidden;
+	position: relative;
+	display: block;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	color: #999;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.selected-wc-text:link, .selected-wc-text:visited, .selected-wc-text:hover, .selected-wc-text:active {
+	color: #999;
+}
+
+.selected-wc-text:after {
+	content: "";
+	position: absolute;
+	top: 16px;
+	right: 10px;
+	box-sizing: content-box;
+	border: 14px solid transparent;
+	border-top-color: #999;
+	border-right-width: 7px;
+	border-bottom-width: 0;
+	border-left-width: 7px;
+	
+	-webkit-transition: all 0.1s;
+}
+
+.select-wc.open .selected-wc-text:after {
+	top: 16px;
+	-webkit-transform: rotate(-180deg);
+}
+
+.wc-list {
+	overflow-y: auto;
+	display: none;
+	position: absolute;
+	top: 50px;
+	left: 0;
+	width: 100%;
+	max-height: 300px;
+	margin-bottom: 30px;
+	background: rgba(255, 255, 255, 0.9);
+	border: 1px solid #dbdbdb;
+	border-radius: 3px;
+	z-index: 100;
+	
+	-webkit-transition: all 0.2s;
+}
+
+.select-wc.open .wc-list {
+	display: block;
+}
+
+.wc-list li {
+	line-height: 44px;
+	text-align: center;
+	cursor: pointer;
+	border-bottom: 1px dashed #dbdbdb;
+}
+
+.wc-list li:hover, .wc-list li:active {
+	background: rgba(0, 0, 0, 0.05);
+}
+
+.wc-list li:last-of-type {
+	border-bottom: none;
+}
+
+/*	
+ * ------------------------------
+ *	responsive
+ * ------------------------------
+ */
+@media screen and (max-width: 768px) {
+	html {
+		background: none;
+	}
+	
+	.cus-page {
+		background-image: url(../img/register-bg.jpg);
+		background-position: bottom center;
+		background-size: cover;
+		background-attachment: fixed;
+	}
+	
+	.cus-page .page-wrapper {
+		background: none;
+	}
+	
+	.cus-page header, .cus-page footer {
+		background: none;
+	}
+	
+	.cus-page header .logo-wrapper, .biz-page header .logo-wrapper {
+		width: 100%;
+		padding: 40px 0 0 0;
+	}
+	
+	.biz-page header .logo-wrapper {
+		margin-top: 0;
+	}
+	
+	.cus-page header .zsy-logo {
+		float: none;
+		margin: 0 auto;
+	}
+	
+	.cus-page footer, .biz-page footer {
+		display: none;
+	}
+	
+	.biz-page .main {
+		padding: 40px 0;
+	}
+	
+	#cus-login-body .main, #cus-register-body .main {
+		width: 100%;
+		padding: 40px 0;
+		background: none;
+		min-height: 500px;
+	}
+	
+	/* 选择器优先级问题，只能这样写了 */
+	.cus-page .login-box-wrapper, .cus-page .register-box-wrapper, .biz-page .login-box-wrapper {
+		float: none;
+		width: 90%;
+		margin: 0 auto;
+	}
+}

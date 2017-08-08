@@ -1,0 +1,92 @@
+<link href="/cms/res/jeui-1.0.0.beta/plugin/jquery-ui-1.10.3.custom/css/blitzer/jquery-ui-1.10.3.custom.min.css?V1.0.4227" rel="stylesheet">
+<link rel="stylesheet" href="/cms/res/jeui-1.0.0.beta/plugin/jquery.jqGrid-4.5.4/css/ui.jqgrid.css?V1.0.4227"/>
+<script src="/cms/res/jeui-1.0.0.beta/plugin/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js?V1.0.4227" type="text/javascript"></script>
+		 <div class="row-fluid">
+              <div class="span12">&nbsp;
+                       <ul class="breadcrumb">
+                          <li>
+                              <i class="icon-home"></i>
+                              <a href="#">系统设置</a>
+                              <span class="icon-angle-right"></span>
+                          </li>
+                          <li>
+                              <a href="#">业务管理员</a>
+                          </li>
+                      </ul>
+                  </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="social-box">
+                        <div class="header">
+                        <input id="txtTest" type="text" />
+                            <!--<h4>账号列表</h4>-->
+                            <div class="btn-group">
+                                <a class="btn btn-primary btnAddManager"><i class="icon-plus-sign-alt"></i> 新增管理员</a>
+                            </div>
+                            <div class="tools">
+                                <div class="btn-group">
+                                    <button class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-list"></i></button>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a data-toggle="modal" href="#account_add_employee">新增员工</a></li>
+                                        <li><a data-toggle="modal" href="#account_add_ip">新增IP终端</a></li>
+                                        <li><a tabindex="-1">编辑</a></li>
+                                        <li><a data-toggle="modal" href="#alert_del_employee">删除</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="javascript:;" class="btnSort">排序</a></li>
+                                        <li><a data-toggle="modal" href="#account_move_employee">移动到</a></li>
+                                        <li><a data-toggle="modal" href="#editField">设置显示字段</a></li>
+                                        <li class="divider"></li>
+                                        <li><a data-toggle="modal" href="#account_import">导入数据</a></li>
+                                        <li><a data-toggle="modal" href="#account_export">导出数据</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="body">
+                            <table cellpadding="0" cellspacing="0" border="0" class="table editable table-striped table-bordered tabledrap">
+                                <caption class="btnSort_area">
+                                    <button class="btn btn-primary"><i class="icon-save"></i> 保存</button>
+                                    <button class="btn">取消</button>
+                                </caption>
+                                <thead>
+                                <tr data-toggle="context" data-target="#context-menu-employee-title">
+                                    <th class="span1"><input type="checkbox"/></th>
+                                    <th>姓名</th>
+                                    <th>账号</th>
+                                    <th>分机号</th>
+                                    <th>权限</th>
+                                    <th style='display:none'>权限</th>
+                                    <th class="span1" style='width:100px;'>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach($this->usersData as $key=>$user):?>
+                                <tr id="data<?php echo $key+1;?>"  userId ="<?php echo $user['userId'];?>"   class="odd gradeX" data-toggle="context" data-target="#context-menu-manager">
+                                    <td><input type="checkbox" id="<?php echo $user['userId'];?>" <?php echo $user['role']?'disabled':''?>></td>
+                                    <td><?php echo $user['name'];?></td>
+                                    <td><?php echo $user['authPhone'];?></td>
+                                    <td><?php echo $user['workPager'];?></td>
+                                    <td><?php echo $user['menu'];?></td>
+                                    <td style='display:none'><?php echo $user['menuId'];?></td>
+                                    <td>
+                                        <div class="btn-group">
+											<?php if($user['role']):?>
+											<a class="btn btn-small btnChangeManager"><i class="icon-pencil"></i></a>
+											<?php else:?>
+											<a class="btn btn-small btnEditManager"><i class="icon-pencil"></i></a>
+                                            <a class="btn btn-small btnDelManager"><i class="icon-remove"></i></a>
+											<?php endif;?>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php endforeach;?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>	
+
+		<script src="<?php echo QXBASEURL;?>js/manager.js"></script>

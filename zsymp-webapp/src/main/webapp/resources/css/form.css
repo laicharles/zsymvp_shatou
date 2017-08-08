@@ -1,0 +1,250 @@
+/**
+ * 表单
+ *
+ * 最基础的表单base-form
+ * base-form -> form-row -> input-row
+ * ---
+ * 蓝色边框简单表单color-card-form
+ * color-card-form -> form-row -> input-row
+ * ---
+ * 不可编辑的表单bill-form
+ * bill-form -> area -> form-row -> input-row
+ *
+ */
+ 
+.page-base-form .container {
+	padding-top: 0;
+}
+
+.page-color-card-form .container {
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.base-form,
+.color-card-form {
+ 	margin-bottom: 20px;
+ 	padding: 20px 15px;
+ 	background: #fff;	
+}
+
+.base-form {
+	border-bottom: 1px solid #dbdbdb;	
+}
+
+.color-card-form {
+	position: relative;
+	overflow: hidden;
+	border: 1px solid #009ff0;
+	border-top-width: 8px;
+	border-radius: 8px;
+	box-shadow: 0 1px 4px 1px rgba(0, 0, 0, .25);
+}
+
+.base-form .form-row,
+.color-card-form .form-row {
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 1px solid #dbdbdb;
+	border-radius: 3px;
+	background: #fff;
+}
+
+.base-form .form-row:last-of-type,
+.color-card-form .form-row:last-of-type {
+	margin-bottom: 0;
+}
+
+.base-form .input-row,
+.color-card-form .input-row {
+	display: table;
+	width: 100%;
+}
+
+.base-form .input-row label,
+.base-form .input-row input,
+.color-card-form .input-row label,
+.color-card-form .input-row input {
+	display: table-cell;
+}
+
+.base-form .input-row label,
+.color-card-form .input-row label {
+	width: 5.5em;
+	padding: 7px 0;
+	color: #666;
+	font-weight: normal;
+	line-height: 20px;
+	vertical-align: top;
+}
+
+.base-form .input-row input,
+.color-card-form .input-row input {
+	overflow: hidden;
+	width: 100%;
+	height: 34px;
+	padding-right: .5em;
+	padding-left: .5em;
+	border: none;
+	outline: none;
+	color: #333;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.base-form .input-row input[disabled],
+.color-card-form .input-row input[disabled] {
+	color: #333;
+}
+
+.color-card-form .input-row textarea {
+	width: 100%;
+	height: 125px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: 7px .5em;
+	border: none;
+	outline: none;
+	resize: none;
+}
+
+/* bill-form跟上面的两种form差太远，单独拿出来写 */
+.page-bill-form .container {
+	padding-top: 0;
+}
+
+.bill-form {
+	margin-bottom: 20px;
+}
+
+.bill-form .area {
+	margin-bottom: 0;
+	padding-left: 1em;
+	border-bottom: 1px solid #dbdbdb;
+	background: #fff;
+}
+
+.bill-form .form-row {
+	padding: 13px 1em 13px .2em;
+	border-bottom: 1px solid #dbdbdb;
+}
+
+.bill-form .form-row:last-of-type {
+	border-bottom: none;
+}
+
+.bill-form .input-row {
+	display: table;
+	width: 100%;
+}
+
+.bill-form .input-row label,
+.bill-form .input-row input,
+.bill-form .input-row textarea,
+.bill-form .input-row p {
+	display: table-cell;
+	height: 1.6em;
+	line-height: 1.6em;
+	vertical-align: top;
+}
+
+.bill-form .input-row label,
+.bill-form .input-row input {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.bill-form .input-row label {
+	width: 20%;
+	min-width: 5em;
+	color: #666;
+	font-weight: normal;
+}
+
+.nessesary:before {
+	content: "*";
+	color: #f00;
+}
+
+.bill-form .input-row input,
+.bill-form .input-row textarea,
+.bill-form .input-row p {
+	width: 100%;
+	padding: 0 .2em;
+	border: none;
+	outline: none;
+	color: #333;
+}
+
+.bill-form .input-row textarea {
+	overflow-y: hidden;
+	resize: none;
+}
+
+.bill-form .input-row p.highlight {
+	color: #f00;
+}
+
+/* top-info，与bill-form配套使用，出现在bill-form顶部 */
+.top-info {
+	position: relative;
+	overflow: hidden;
+	margin: 0;
+	padding: 15px 0;
+	border-bottom: 1px solid #dbdbdb;
+	color: #fff;
+	/*background: url(../img/bg03.jpg) center;*/
+}
+
+.top-info label {
+	color: #eee;
+	font-weight: normal;
+}
+
+.top-info .account-number,
+.top-info .account-name {
+	float: left;
+	position: relative;
+	min-width: 45%;
+	height: 50px;
+	overflow: hidden;
+	padding-left: 1.2em;
+}
+
+.top-info .account-number:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 0;
+	height: 50px;
+	border-right: 1px solid #fff;
+}
+
+/* bill-status，与bill-form配套使用，出现在bill-form顶部 */
+.bill-status {
+	padding: 5px 1.2em;
+	border-bottom: 1px solid #dbdbdb;
+	color: #fff;
+	/* background: url(../img/bg04.jpg) bottom center; */
+}
+
+.bill-status p {
+	line-height: 2;
+}
+
+.bill-status .fee,
+.bill-status .status {
+	text-align: center;
+}
+
+.bill-status .datetime,
+.bill-status .status {
+	font-size: 1.5rem;
+}
+
+.bill-status .fee strong {
+	font-size: 2.6rem;
+	font-weight: normal;
+}

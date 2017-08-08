@@ -1,0 +1,78 @@
+.need_font {
+	color: red;
+}
+
+.kindeditor_class {
+	width: 700px;
+	height: 300px;
+}
+
+.textArea_class {
+	width: 250px;
+	height:100px;
+}
+.pageUrl_class {
+	width: 700px;
+}
+
+.general_input_class {
+	width: 250px;
+}
+
+.general_select_class {
+	width: 264px;
+}
+
+.date_input_class {
+	width: 173px;
+}
+
+
+.mtrl_class {
+	clear: both;
+	padding-bottom: 10px;
+}
+
+.pageContent_class {
+	float: left;
+}
+
+.pageUrlTips{
+	color:#666;
+	margin:-10px 0 5px 0;
+}
+
+.list_btn_div_class {
+	padding-bottom: 5px;
+}
+
+.search_field_class {
+	margin-top: 3px;
+}
+
+.search_field_class input, select {
+	margin-top: 12px;
+}
+
+.search_field_class input:LAST-CHILD {
+	margin-top: -2px;
+}
+
+.title_class {
+	font-size: 25px;
+	font-weight: 300;
+}
+
+.imgShow_class {
+	width:150px;
+	height:150px;
+}
+
+.bootbox
+  {
+  	z-index:99999;
+  }
+ .modal
+ {
+ 	display:none;
+ }

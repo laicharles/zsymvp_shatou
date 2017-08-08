@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-4.1.xsd 
+						http://www.springframework.org/schema/context
+        				http://www.springframework.org/schema/context/spring-context-4.1.xsd
+        				http://www.springframework.org/schema/tx
+				        http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+				        http://www.springframework.org/schema/aop
+				        http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+				        ">
+    
+    <!-- 扫描业务层 -->
+     <context:component-scan base-package="com.wisewater.base,com.wisewater.service,com.wisewater.service,com.wisewater.*.service">
+     	<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+     </context:component-scan>
+     
+     <!-- 映射配置 -->
+	<beans:bean id="mapper" class="org.dozer.DozerBeanMapper">
+		<beans:property name="mappingFiles">
+			<beans:list>
+				<beans:value>dozerBeanMapping.xml</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+     
+     <!-- 声明式事务 -->
+     <aop:config>
+        <aop:pointcut id="serviceOperation"
+                expression="execution(* com.wisewater.*.service.*ServiceImpl.*(..))"/>
+        <aop:advisor pointcut-ref="serviceOperation" advice-ref="txAdvice"/>
+    </aop:config>
+    
+    <!-- 邮件配置发送配置，需要同步修改constant.properties里  mail.send.address 的值  -->
+    <beans:bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<beans:property name="host" value="smtp.exmail.qq.com"/>
+		<beans:property name="defaultEncoding" value="UTF-8"/>
+		<beans:property name="username" value="master@wisewater.com.cn"/>
+		<beans:property name="password" value="wisewater2015"/>
+	</beans:bean>
+    
+     <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="save*"  propagation="REQUIRED"/>
+            <tx:method name="create*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
+            <tx:method name="enable*"  propagation="REQUIRED"/>
+            <tx:method name="disable*"  propagation="REQUIRED"/>
+            <tx:method name="init*"  propagation="REQUIRED"/>
+            <tx:method name="validate*" propagation="REQUIRED"/>
+            <tx:method name="load*" propagation="REQUIRED"/>
+            <tx:method name="checkUpdate*"  propagation="REQUIRED"/>
+            <tx:method name="send*"  propagation="REQUIRED"/>
+            <tx:method name="preview*"  propagation="REQUIRED"/>
+            <tx:method name="inser*"  propagation="REQUIRED"/>
+            <tx:method name="paySuccess*"  propagation="REQUIRED"/>
+            <tx:method name="process*"  propagation="REQUIRED"/>
+            <tx:method name="answer*"  propagation="REQUIRED"/>
+            <tx:method name="import*" propagation="REQUIRES_NEW"/>
+            <tx:method name="*" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+    
+    
+    <beans:bean id="LoadConstant" class="com.wisewater.util.tools.LoadConstant" >
+    	<beans:property name="picPath" value="${pic.path}"/>
+    	<beans:property name="webSitePath" value="${webSitePath}"/>
+    	<beans:property name="pageSize" value="${pageSize}"/>
+    	<beans:property name="bindCount" value="${bindCount}"/>
+    	<beans:property name="initPassword" value="${original.password}"/>
+    	<beans:property name="allReply" value="${allReply}"/>
+    	<beans:property name="webServicePath" value="${webService.path}"/>
+    	<beans:property name="bindUserServicePath" value="${bindUserService.path}"/>
+    	<beans:property name="billServicePath" value="${billService.path}"/>
+    	<beans:property name="chargeServicePath" value="${chargeService.path}"/>
+    	<beans:property name="payStatementServicePath" value="${payStatementService.path}"/>
+    	<beans:property name="postWorkerServicePath" value="${postWorkerService.path}"/>
+    	<beans:property name="timeLimitServicePath" value="${timeLimitService.path}"/>
+    	
+    	<beans:property name="industry1" value="${industry1}"/>
+    	<beans:property name="industry2" value="${industry2}"/>
+    	<beans:property name="stopWtrTempCode" value="${stopWtrTempCode}"/>
+    	<beans:property name="reminderTempCode" value="${reminderTempCode}"/>
+    	<beans:property name="noticeTempCode" value="${noticeTempCode}"/>
+    	<beans:property name="feedbackTempCode" value="${feedbackTempCode}"/>
+    	<beans:property name="replyfeedbackTempCode" value="${replyfeedbackTempCode}"/>
+    	<beans:property name="reviewTempCode" value="${reviewTempCode}"/>
+    	<beans:property name="replyleavewordsTempCode" value="${replyleavewordsTempCode}"/>
+    	<beans:property name="leavewordsTempCode" value="${leavewordsTempCode}"/>
+    	<beans:property name="paySuccessTempCode" value="${paySuccessTempCode}"/>
+    </beans:bean>
+    
+    <beans:bean id="JdbcConfig" class="com.wisewater.util.tools.JdbcConfig" >
+    	<beans:property name="driverClass" value="${jdbc.driverClass}"/>
+    	<beans:property name="jdbcUrl" value="${jdbc.jdbcUrl}"/>
+    	<beans:property name="user" value="${jdbc.user}"/>
+    	<beans:property name="password" value="${jdbc.password}"/>
+    	<beans:property name="initialPoolSize" value="${jdbc.initialPoolSize}"/>
+    	<beans:property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
+    	<beans:property name="minPoolSize" value="${jdbc.minPoolSize}"/>
+    	<beans:property name="maxIdleTime" value="${jdbc.maxIdleTime}"/>
+    	<beans:property name="maxStatements" value="${jdbc.maxStatements}"/>
+    	<beans:property name="acquireIncrement" value="${jdbc.acquireIncrement}"/>
+    	<beans:property name="schema" value="${jdbc.schema}"/>
+    </beans:bean>
+</beans>        			

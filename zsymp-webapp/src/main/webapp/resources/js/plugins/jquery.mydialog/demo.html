@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title>jquery.mydialog</title>
+	<link rel="stylesheet" type="text/css" href="./reset.css"/>
+	<link rel="stylesheet" type="text/css" href="./base.css"/>
+	<link rel="stylesheet" type="text/css" href="./mydialog.css"/>
+</head>
+<body>
+<button id="btn">按钮</button>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="./jquery.mydialog.js"></script>
+<script>
+	$('#btn').click(function (){
+		$(this).mydialog({
+			overlay: true,
+			winType: 'alert',
+			skinClass: '',
+			title: 'WOW',
+			content: '<p style="color:red">Content</p>',
+			hasCloseBtn: true,
+			handler4AlertBtn: function (){
+				console.log('alert');
+			}
+		});
+	});
+</script>
+</body>
+</html>
